@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Venus Bijoux - Loja de Bijuterias",
-  description: "Venus Bijoux - bijuterias artesanais e únicas",
+  title: "Venux Bijoux - Loja de Bijuterias",
+  description: "Venux Bijoux - bijuterias artesanais e únicas",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
       <body>
         <header className="site-header">
           <div className="container header-inner">
-            <div className="logo">Venus Bijoux</div>
+            <div className="logo">Venux Bijoux</div>
             <nav>
               <ul className="menu">
                 <li>
@@ -37,7 +37,7 @@ export default function RootLayout({
 
         <footer className="site-footer">
           <div className="container">
-            <p>© 2025 Venus Bijoux - Todos os direitos reservados.</p>
+            <p>© 2025 Venux Bijoux - Todos os direitos reservados.</p>
           </div>
         </footer>
       </body>

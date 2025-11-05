@@ -1,11 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
-type Product = { id: number; type: string; name: string; description: string };
+type ProductType = "Colar" | "Anel" | "Brinco" | "Pulseira";
+type VariantKey = "prata" | "dourado";
+type Product = {
+  id: number;
+  type: ProductType;
+  name: string;
+  description: string;
+};
 
 export default function Home() {
-  const imagePool = {
+  const imagePool: Record<ProductType, Record<VariantKey, string>> = {
     Colar: {
       prata: "/imagens/colar1_prata.svg",
       dourado: "/imagens/colar1_dourado.svg",
@@ -22,9 +30,9 @@ export default function Home() {
       prata: "/imagens/pulseira1_prata.svg",
       dourado: "/imagens/pulseira1_dourado.svg",
     },
-  } as const;
+  };
 
-  const types = ["Colar", "Anel", "Brinco", "Pulseira"];
+  const types: ProductType[] = ["Colar", "Anel", "Brinco", "Pulseira"];
 
   const products: Product[] = Array.from({ length: 30 }).map((_, i) => {
     const type = types[i % types.length];
@@ -36,15 +44,15 @@ export default function Home() {
     };
   });
 
-  const [selected, setSelected] = useState<Record<number, string>>(() => {
-    const map: Record<number, string> = {};
+  const [selected, setSelected] = useState<Record<number, VariantKey>>(() => {
+    const map: Record<number, VariantKey> = {};
     products.forEach((p) => (map[p.id] = "prata"));
     return map;
   });
 
   const [hovered, setHovered] = useState<{
     id: number | null;
-    variant: string | null;
+    variant: VariantKey | null;
   }>({ id: null, variant: null });
 
   function getImageFor(p: Product) {
@@ -52,7 +60,7 @@ export default function Home() {
       hovered.id === p.id && hovered.variant
         ? hovered.variant
         : selected[p.id] || "prata";
-    const pool = (imagePool as any)[p.type];
+    const pool = imagePool[p.type];
     return pool && pool[variant] ? pool[variant] : pool.prata;
   }
 
@@ -60,7 +68,7 @@ export default function Home() {
     <>
       <section className="banner">
         <div className="container banner-inner">
-          <h1>Bem-vindo à Venus Bijoux</h1>
+          <h1>Bem-vindo à Venux Bijoux</h1>
           <p>Bijuterias únicas feitas com amor e criatividade.</p>
           <a href="#produtos" className="btn btn-primary">
             Explore Agora
@@ -73,7 +81,7 @@ export default function Home() {
           <h2>Nossos Produtos</h2>
           <div className="grid-produtos">
             {products.map((p) => {
-              const variants = [
+              const variants: { key: VariantKey; label: string }[] = [
                 { key: "prata", label: "Prata" },
                 { key: "dourado", label: "Dourado" },
               ];
@@ -81,7 +89,13 @@ export default function Home() {
               return (
                 <div className="produto" key={p.id}>
                   <div className="image-wrap">
-                    <img src={getImageFor(p)} alt={p.name} />
+                    <Image
+                      src={getImageFor(p)}
+                      alt={p.name}
+                      width={280}
+                      height={280}
+                      style={{ objectFit: "contain" }}
+                    />
 
                     <div className="variant-badges">
                       {variants.map((v) => {
@@ -106,11 +120,26 @@ export default function Home() {
                                 setHovered({ id: null, variant: null })
                               }
                               onClick={() =>
-                                setSelected((s: Record<number, string>) => ({
-                                  ...s,
-                                  [p.id]: v.key,
-                                }))
+                                setSelected(
+                                  (s: Record<number, VariantKey>) => ({
+                                    ...s,
+                                    [p.id]: v.key,
+                                  })
+                                )
                               }
+                              onKeyDown={(
+                                e: React.KeyboardEvent<HTMLButtonElement>
+                              ) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                  e.preventDefault();
+                                  setSelected(
+                                    (s: Record<number, VariantKey>) => ({
+                                      ...s,
+                                      [p.id]: v.key,
+                                    })
+                                  );
+                                }
+                              }}
                               type="button"
                             />
                           );
@@ -130,11 +159,24 @@ export default function Home() {
                               setHovered({ id: null, variant: null })
                             }
                             onClick={() =>
-                              setSelected((s: Record<number, string>) => ({
+                              setSelected((s: Record<number, VariantKey>) => ({
                                 ...s,
                                 [p.id]: v.key,
                               }))
                             }
+                            onKeyDown={(
+                              e: React.KeyboardEvent<HTMLButtonElement>
+                            ) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                setSelected(
+                                  (s: Record<number, VariantKey>) => ({
+                                    ...s,
+                                    [p.id]: v.key,
+                                  })
+                                );
+                              }
+                            }}
                             type="button"
                           />
                         );
@@ -154,9 +196,9 @@ export default function Home() {
 
       <section id="sobre" className="section light">
         <div className="container">
-          <h2>Sobre a Venus Bijoux</h2>
+          <h2>Sobre a Venux Bijoux</h2>
           <p>
-            A Venus Bijoux é uma loja de bijuterias artesanais, feitas com
+            A Venux Bijoux é uma loja de bijuterias artesanais, feitas com
             materiais de alta qualidade e designs exclusivos.
           </p>
           <p>Nosso objetivo é levar beleza e autenticidade ao seu dia a dia!</p>
