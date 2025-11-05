@@ -1,0 +1,236 @@
+:root {
+  --bg: #fff7f3;
+  --text: #2b2b2b;
+  --accent: #b76e79;
+  --muted: #6b6b6b;
+  --container: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.site-header {
+  background: #ffffffcc;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.menu a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+.menu a:hover {
+  color: var(--text);
+}
+
+/* Banner */
+.banner {
+  padding: 3.5rem 0;
+  background: linear-gradient(180deg, #fffaf9 0%, #fff2f0 100%);
+}
+.banner-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  text-align: left;
+}
+.banner h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+.banner p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid #e5e5e5;
+  color: var(--text);
+}
+
+/* Sections */
+.section {
+  padding: 2rem 0;
+}
+.section.light {
+  background: #fff;
+}
+
+h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+/* Grid de produtos */
+.grid-produtos {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.produto {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.produto img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.produto h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+.produto p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Form */
+.form {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 520px;
+}
+.form input,
+.form textarea {
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+  font-size: 0.95rem;
+}
+.form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Image wrapper + variant badges */
+.image-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.image-wrap img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.variant-badges {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  z-index: 10;
+}
+
+.variant-badge {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  display: inline-block;
+}
+
+.variant-prata { background: #c0c0c0; }
+.variant-dourado { background: #d4af37; }
+
+@media (max-width: 640px) {
+  .variant-badge { width: 12px; height: 12px; }
+  .image-wrap img { height: 160px; }
+}
+
+/* selected badge state */
+.variant-badge.selected {
+  transform: scale(1.15);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  border-color: #fff;
+}
+
+.variant-badge:focus {
+  outline: 2px solid #00000022;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid #eee;
+  background: #fff;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+.site-footer p { margin: 0; color: var(--muted); }
+
+/* Responsividade */
+@media (max-width: 640px) {
+  .banner h1 { font-size: 1.5rem; }
+  .produto img { height: 140px; }
+  .header-inner { padding: 0.5rem 0; }
+  .menu { gap: 0.6rem; }
+}
+
