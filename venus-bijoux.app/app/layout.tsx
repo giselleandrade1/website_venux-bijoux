@@ -4,6 +4,7 @@ import ThemeProvider from "../src/context/ThemeProvider";
 import SearchProvider from "../src/context/SearchProvider";
 import CartProvider from "../src/context/CartProvider";
 import CartDrawer from "../src/components/CartDrawer";
+import ThemeToggle from "./components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Venux Bijoux - Loja de Bijuterias",
@@ -23,7 +24,15 @@ export default function RootLayout({
             <CartProvider>
               <header className="site-header">
                 <div className="container header-inner">
-                  <div className="logo">Venux Bijoux</div>
+                  <div className="logo">
+                    <a
+                      href="https://www.instagram.com/venux.bijoux?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Venux Bijoux
+                    </a>
+                  </div>
                   <nav>
                     <ul className="menu">
                       <li>
@@ -37,6 +46,9 @@ export default function RootLayout({
                       </li>
                     </ul>
                   </nav>
+                  <div>
+                    <ThemeToggle />
+                  </div>
                 </div>
               </header>
 

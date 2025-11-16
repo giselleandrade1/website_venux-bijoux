@@ -1,0 +1,89 @@
+{
+  "info": {
+    "name": "Venux Bijoux API - Generated",
+    "_postman_id": "venux-bijoux-generated",
+    "description": "Minimal Postman collection generated from backend/openapi.generated.yaml",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.example.com",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Products - List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/products?q=colar",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products"],
+          "query": [
+            {
+              "key": "q",
+              "value": "colar"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Detail",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/products/{slug}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", "{slug}"]
+        }
+      }
+    },
+    {
+      "name": "Cart - Add Item",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productVariantId\": \"<variant-id>\",\n  \"quantity\": 1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/cart/items",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cart", "items"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"password\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    }
+  ]
+}

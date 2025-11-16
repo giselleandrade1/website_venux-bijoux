@@ -120,7 +120,7 @@ export default function Home() {
                         alt={p.name}
                         width={280}
                         height={280}
-                        style={{ objectFit: "contain" }}
+                        className="contain"
                       />
 
                       <div className="variant-badges">

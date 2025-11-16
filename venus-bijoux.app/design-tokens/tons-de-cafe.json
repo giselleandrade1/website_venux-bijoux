@@ -1,0 +1,43 @@
+{
+  "name": "Tons de Café",
+  "description": "Paleta profissional em tons de café para modo claro e modo escuro, organizada por função para e-commerce.",
+  "modes": {
+    "light": {
+      "background.primary": "#F3EDE6",
+      "background.secondary": "#D8C8B8",
+      "surface": "#D8C8B8",
+      "highlight": "#AA7B5A",
+      "accent.gold": "#C9A25A",
+      "accent.silver": "#BFC4C8",
+      "accent.bronze": "#8C6A4A",
+      "text.primary": "#3B2F2A",
+      "text.secondary": "#5A4337",
+      "border": "#E7DACF",
+      "depth": "#2A221F"
+    },
+    "dark": {
+      "background.primary": "#1D1816",
+      "background.secondary": "#2C2421",
+      "surface": "#3B2F2A",
+      "highlight": "#8B6045",
+      "accent.gold": "#B89045",
+      "accent.silver": "#9FA4A7",
+      "accent.bronze": "#745540",
+      "text.primary": "#F7F3EE",
+      "text.secondary": "#D9D2CB",
+      "border": "#463C37"
+    }
+  },
+  "roles": {
+    "bg.light": "background.primary",
+    "bg.dark": "background.primary",
+    "surface.light": "surface",
+    "surface.dark": "surface",
+    "text.onLight": "text.primary",
+    "text.onDark": "text.primary",
+    "cta.primary": "highlight",
+    "cta.accent": "accent.gold",
+    "muted": "text.secondary",
+    "border": "border"
+  }
+}
