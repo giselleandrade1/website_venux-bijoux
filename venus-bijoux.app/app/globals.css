@@ -13,6 +13,13 @@
   --shadow: rgba(0,0,0,0.06);
 }
 
+/* Product card actions */
+.product-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -25,6 +32,7 @@ body {
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 260ms ease, color 260ms ease;
 }
 
 .container {
@@ -246,5 +254,44 @@ h2 {
   .produto img { height: 140px; }
   .header-inner { padding: 0.5rem 0; }
   .menu { gap: 0.6rem; }
+}
+
+/* Dark theme overrides (applied when document.documentElement has data-theme="dark") */
+[data-theme="dark"] {
+  --bg-primary: #0f1112; /* near-black */
+  --bg-secondary: #161718; /* dark sections */
+  --accent: #C7A17A; /* keep warm accent */
+  --accent-dark: #8d6e63;
+  --text-primary: #FCF9F6; /* light text */
+  --text-secondary: #cfc0b8; /* muted light */
+  --card-bg: #151617;
+  --shadow: rgba(0,0,0,0.6);
+}
+
+/* Small adjustments for dark theme elements */
+[data-theme="dark"] body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .site-header,
+[data-theme="dark"] .site-footer {
+  background: var(--bg-primary);
+  border-color: rgba(255,255,255,0.04);
+}
+
+[data-theme="dark"] .btn-outline {
+  border-color: rgba(255,255,255,0.06);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .produto {
+  background: var(--card-bg);
+  border-color: rgba(255,255,255,0.02);
+}
+
+/* add smooth transition to cards and header/footer for theme switch */
+.site-header, .site-footer, .produto, .banner, .container, .card {
+  transition: background-color 260ms ease, color 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
 }
 

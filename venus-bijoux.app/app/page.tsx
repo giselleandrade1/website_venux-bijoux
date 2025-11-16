@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useSearch } from "../src/context/SearchProvider";
+import { useCart } from "../src/context/CartProvider";
 
 type ProductType = "Colar" | "Anel" | "Brinco" | "Pulseira";
 type VariantKey = "prata" | "dourado";
@@ -34,13 +36,17 @@ export default function Home() {
 
   const types: ProductType[] = ["Colar", "Anel", "Brinco", "Pulseira"];
 
-  const products: Product[] = Array.from({ length: 30 }).map((_, i) => {
+  const products: (Product & { price: number })[] = Array.from({
+    length: 30,
+  }).map((_, i) => {
     const type = types[i % types.length];
+    const price = 49.9 + (i % 7) * 15;
     return {
       id: i + 1,
       type,
       name: `${type} Artesanal ${i + 1}`,
       description: `Peça ${type.toLowerCase()} feita à mão, design exclusivo.`,
+      price,
     };
   });
 
@@ -64,6 +70,17 @@ export default function Home() {
     return pool && pool[variant] ? pool[variant] : pool.prata;
   }
 
+  const { q } = useSearch();
+  const cart = useCart();
+
+  type LocalCartItem = {
+    id: number;
+    name: string;
+    variant: string;
+    price: number;
+    qty: number;
+  };
+
   return (
     <>
       <section className="banner">
@@ -80,37 +97,85 @@ export default function Home() {
         <div className="container">
           <h2>Nossos Produtos</h2>
           <div className="grid-produtos">
-            {products.map((p) => {
-              const variants: { key: VariantKey; label: string }[] = [
-                { key: "prata", label: "Prata" },
-                { key: "dourado", label: "Dourado" },
-              ];
+            {products
+              .filter((p) => {
+                if (!q) return true;
+                return (
+                  p.name.toLowerCase().includes(q.toLowerCase()) ||
+                  p.type.toLowerCase().includes(q.toLowerCase()) ||
+                  p.description.toLowerCase().includes(q.toLowerCase())
+                );
+              })
+              .map((p) => {
+                const variants: { key: VariantKey; label: string }[] = [
+                  { key: "prata", label: "Prata" },
+                  { key: "dourado", label: "Dourado" },
+                ];
 
-              return (
-                <div className="produto" key={p.id}>
-                  <div className="image-wrap">
-                    <Image
-                      src={getImageFor(p)}
-                      alt={p.name}
-                      width={280}
-                      height={280}
-                      style={{ objectFit: "contain" }}
-                    />
+                return (
+                  <div className="produto" key={p.id}>
+                    <div className="image-wrap">
+                      <Image
+                        src={getImageFor(p)}
+                        alt={p.name}
+                        width={280}
+                        height={280}
+                        style={{ objectFit: "contain" }}
+                      />
 
-                    <div className="variant-badges">
-                      {variants.map((v) => {
-                        const isSelected = selected[p.id] === v.key;
-                        const btnClass = `variant-badge variant-${v.key} ${
-                          isSelected ? "selected" : ""
-                        }`;
+                      <div className="variant-badges">
+                        {variants.map((v) => {
+                          const isSelected = selected[p.id] === v.key;
+                          const btnClass = `variant-badge variant-${v.key} ${
+                            isSelected ? "selected" : ""
+                          }`;
 
-                        // render literal aria-pressed values to satisfy static linting
-                        if (isSelected) {
+                          // render literal aria-pressed values to satisfy static linting
+                          if (isSelected) {
+                            return (
+                              <button
+                                key={v.key}
+                                className={btnClass}
+                                aria-pressed="true"
+                                aria-label={v.label}
+                                title={v.label}
+                                onMouseEnter={() =>
+                                  setHovered({ id: p.id, variant: v.key })
+                                }
+                                onMouseLeave={() =>
+                                  setHovered({ id: null, variant: null })
+                                }
+                                onClick={() =>
+                                  setSelected(
+                                    (s: Record<number, VariantKey>) => ({
+                                      ...s,
+                                      [p.id]: v.key,
+                                    })
+                                  )
+                                }
+                                onKeyDown={(
+                                  e: React.KeyboardEvent<HTMLButtonElement>
+                                ) => {
+                                  if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    setSelected(
+                                      (s: Record<number, VariantKey>) => ({
+                                        ...s,
+                                        [p.id]: v.key,
+                                      })
+                                    );
+                                  }
+                                }}
+                                type="button"
+                              />
+                            );
+                          }
+
                           return (
                             <button
                               key={v.key}
                               className={btnClass}
-                              aria-pressed="true"
+                              aria-pressed="false"
                               aria-label={v.label}
                               title={v.label}
                               onMouseEnter={() =>
@@ -143,53 +208,68 @@ export default function Home() {
                               type="button"
                             />
                           );
-                        }
+                        })}
+                      </div>
+                    </div>
 
-                        return (
-                          <button
-                            key={v.key}
-                            className={btnClass}
-                            aria-pressed="false"
-                            aria-label={v.label}
-                            title={v.label}
-                            onMouseEnter={() =>
-                              setHovered({ id: p.id, variant: v.key })
+                    <h3>{p.name}</h3>
+                    <p>{p.description}</p>
+                    <div className="product-actions">
+                      <button
+                        className="btn btn-outline"
+                        onClick={() => {
+                          try {
+                            cart.add({
+                              id: p.id,
+                              name: p.name,
+                              variant: selected[p.id],
+                              price: p.price,
+                            });
+                            alert("Adicionado ao carrinho");
+                          } catch {
+                            // fallback: use localStorage directly
+                            const raw =
+                              localStorage.getItem("venux-cart") || "[]";
+                            const arr: LocalCartItem[] = JSON.parse(raw);
+                            const existing = arr.find(
+                              (it) =>
+                                it.id === p.id && it.variant === selected[p.id]
+                            );
+                            if (existing) {
+                              existing.qty += 1;
+                            } else {
+                              arr.push({
+                                id: p.id,
+                                name: p.name,
+                                variant: selected[p.id],
+                                price: p.price,
+                                qty: 1,
+                              });
                             }
-                            onMouseLeave={() =>
-                              setHovered({ id: null, variant: null })
-                            }
-                            onClick={() =>
-                              setSelected((s: Record<number, VariantKey>) => ({
-                                ...s,
-                                [p.id]: v.key,
-                              }))
-                            }
-                            onKeyDown={(
-                              e: React.KeyboardEvent<HTMLButtonElement>
-                            ) => {
-                              if (e.key === "Enter" || e.key === " ") {
-                                e.preventDefault();
-                                setSelected(
-                                  (s: Record<number, VariantKey>) => ({
-                                    ...s,
-                                    [p.id]: v.key,
-                                  })
-                                );
-                              }
-                            }}
-                            type="button"
-                          />
-                        );
-                      })}
+                            localStorage.setItem(
+                              "venux-cart",
+                              JSON.stringify(arr)
+                            );
+                            alert("Adicionado ao carrinho (localStorage)");
+                          }
+                        }}
+                      >
+                        Comprar
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() =>
+                          alert(
+                            "Configurar função — implementar página de configuração se desejar"
+                          )
+                        }
+                      >
+                        Configurar
+                      </button>
                     </div>
                   </div>
-
-                  <h3>{p.name}</h3>
-                  <p>{p.description}</p>
-                  <button className="btn btn-outline">Comprar</button>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       </section>

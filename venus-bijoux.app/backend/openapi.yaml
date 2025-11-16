@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: Venux Bijoux API
+  version: 1.0.0
+  description: OpenAPI spec (initial) for the Venux Bijoux e-commerce APIs
+servers:
+  - url: https://api.example.com
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                email: { type: string }
+                password: { type: string }
+      responses:
+        "201":
+          description: Created
+  /auth/login:
+    post:
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        "200":
+          description: OK
+  /products:
+    get:
+      summary: List products with filters and pagination
+      parameters:
+        - in: query
+          name: q
+          schema: { type: string }
+        - in: query
+          name: page
+          schema: { type: integer }
+        - in: query
+          name: limit
+          schema: { type: integer }
+      responses:
+        "200":
+          description: OK
+  /products/{slug}:
+    get:
+      summary: Get product detail
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: OK
+  /cart:
+    get:
+      summary: Get current cart
+      responses:
+        "200":
+          description: OK
+    post:
+      summary: Create/replace cart
+  /cart/items:
+    post:
+      summary: Add item to cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productVariantId: { type: string }
+                quantity: { type: integer }
+                configJson: { type: object }
+      responses:
+        "201": { description: Created }
+  /checkout/create:
+    post:
+      summary: Create checkout session
+      requestBody: { required: true }
+      responses:
+        "201": { description: Created }
+components:
+  schemas: {}
