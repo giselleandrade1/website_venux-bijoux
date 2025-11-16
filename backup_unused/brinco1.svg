@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <rect width="100%" height="100%" fill="#fff7f3"/>
-  <g fill="#b76e79" font-family="Arial, Helvetica, sans-serif">
-    <path d="M300 200 C340 150, 460 150, 500 200 L460 260 C430 230, 370 230, 340 260 Z" fill="#fde8ea" stroke="#b76e79" stroke-width="5" />
-    <text x="50%" y="78%" font-size="28" text-anchor="middle" fill="#7a3b3f">Brinco Vintage</text>
-  </g>
-</svg>
