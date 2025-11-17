@@ -1,0 +1,31 @@
+Prompt para paleta de cores em tons de cafe
+
+Quero que voce gere uma paleta completa e estrategica em tons de cafe adaptada para modo claro e modo escuro. Forneca cores com codigos hex, uso recomendado para cada tom e contraste com exemplos numericos de relacao de contraste com texto claro e escuro.
+
+1. Diretriz geral
+   A paleta deve transmitir artesania contemporanea, requinte e aconchego. Deve garantir leitura excelente em ambos os modos e apresentar acentos elegantes para botoes e highlights. Deve ser harmonica e escalavel.
+
+2. Paleta proposta com codigos hex e funcao
+   Apresente cores em formato tabela com campos nome codigoHex usoRecomendado exemplodeUso e contrasteComTextoClaro e contrasteComTextoEscuro. Sugestao abaixo:
+
+1) coffeeDeep: #3B2F2A usoRecomendado header texto principal em modo escuro contrasteComTextoClaro 14.5 contrasteComTextoEscuro 2.1
+2) coffeeMid: #5A4136 usoRecomendado cards e surface secundario contrasteComTextoClaro 12.1 contrasteComTextoEscuro 2.8
+3) coffeeWarm: #8B5E4A usoRecomendado accents e badges contrasteComTextoClaro 8.9 contrasteComTextoEscuro 3.5
+4) creamLight: #F7F3EE usoRecomendado fundo modo claro contrasteComTextoClaro 1.9 contrasteComTextoEscuro 15.2
+5) taupeSoft: #C9B8AF usoRecomendado fundo secundario e bordas contrasteComTextoClaro 3.8 contrasteComTextoEscuro 9.4
+6) goldAccent: #C99B4A usoRecomendado pingentes dourado e highlights contrasteComTextoClaro 6.2 contrasteComTextoEscuro 3.9
+7) silverAccent: #BFC5C9 usoRecomendado pingentes prata e icones contrasteComTextoClaro 4.0 contrasteComTextoEscuro 8.8
+8) bronzeAccent: #8C6A4A usoRecomendado pingentes bronze e detalhes contrasteComTextoClaro 5.6 contrasteComTextoEscuro 4.2
+9) textDark: #1F1A18 usoRecomendado texto principal modo claro contrasteComTextoClaro 16.8 contrasteComTextoEscuro 1.7
+10) textLight: #FFFFFF usoRecomendado texto principal modo escuro contrasteComTextoClaro 1.0 contrasteComTextoEscuro 21.0
+
+Os valores de contraste forneca sao ilustrativos. Recomendacao: valide numericamente com ferramenta de contraste para garantir WCAG 2.1 AA.
+
+3. Tokens de cor e variaveis CSS
+   Forneca exemplo de variaveis em JSON e em formato CSS variables usando nomes sem trafo com traço, por exemplo colorCoffeeDeep colorCoffeeMid colorCreamLight colorGoldAccent. Inclua exemplos de uso para botoes primarios secundarios fondo de pagina surface cards e textos.
+
+4. Modo claro e modo escuro
+   Defina mapeamento de tokens do modo claro para modo escuro por exemplo backgroundLight equals creamLight backgroundDark equals coffeeDeep textOnLight equals textDark textOnDark equals textLight. Explique regras para alternancia e transicoes suaves entre modos.
+
+5. Entregaveis
+   Forneca paleta em formato ASE ou em JSON com todos os tokens e regras de uso, guias de acessibilidade e exemplos de componentes com a paleta aplicada em modo claro e escuro.

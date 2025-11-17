@@ -1,0 +1,35 @@
+Prompt para Back end e arquitetura
+
+Quero que voce projete a arquitetura back end completa para o mesmo e commerce de bijuteria artesanal. A arquitetura deve ser segura escalavel e preparada para producao. Entregue esquema de banco de dados, endpoints API REST ou GraphQL, fluxos de autenticao, esquema de autorizacao, exemplos de payloads e recomendacoes de infraestrutura.
+
+1. Tecnologias sugeridas
+   Sugira pilha moderna com opcao minima e opcao recomendada.
+   a) Opcao minima: Nodejs com Express ou Fastify, Postgres, Redis para cache, S3 compativel para armazenar imagens.
+   b) Opcao recomendada: TypeScript com NestJS, Postgres com prisma, Redis para cache e fila, Minio ou AWS S3 para armazenamento, Kubernetes para orquestracao, Cloud CDN para distribucao de assets.
+
+2. Autenticacao e seguranca
+   Implemente JWT com refresh tokens armazenados com seguranca, suporte a OAuth2 para login social, hashed passwords com bcrypt ou argon2, rotacao de chaves, rate limiting, CORS, validação de input e protecao contra CSRF e XSS.
+
+3. Banco de dados e modelo de dados
+   Descreva entidades principais e relacoes: user, product, productVariant, pendantOption, productImage, cart, cartItem, order, orderItem, payment, inventory, collection, favorite, review, adminUser, auditLog. Forneca campo principal para cada entidade e tipos de dados e indices importantes.
+
+4. Endpoints API
+   Forneca lista de endpoints principais com metodo path descricao e exemplo de request e response. Inclua: auth register login refresh logout, products list detail search filter, product create update delete admin, pendant options list select, cart get add update remove, checkout create, orders list detail status update webhook de pagamento, admin reports stock alerts.
+
+5. Search e filtragem
+   Sugira uso de search engine dedicated como ElasticSearch ou Postgres full text para busca inteligente com sugestoes e autocomplete. Forneca exemplo de query e estrutura de response.
+
+6. Upload e otimizacao de imagens
+   Descreva fluxo de upload de imagens com processamento server side para gerar multiplas resolucoes e formatos WebP e AVIF, uso de CDN e politicas de cache e expurgo. Para preview do configurador gerar sprites ou canvases renderizados.
+
+7. Escalabilidade e performance
+   Inclua estrategias: horizontal scaling stateless services, session store centralizado, cache de pagina e cache de fragmento, uso de CDN, database read replicas, fila para tarefas pesadas e monitoramento com metrics e alerts.
+
+8. Testes e CI CD
+   Inclua recomendacao de testes unitarios integracao e end to end, exemplos de pipelines CI CD para build testes e deploy automatizado, backups e politica de rollback.
+
+9. Observabilidade e manutencao
+   Inclua logs estruturados traces distribuido e metrics. Ferramentas recomendadas para APM e alertas. Planos de manutencao e rotinas de seguranca.
+
+10. Entregaveis
+    Documentacao OpenAPI ou GraphQL schema exemplos de scripts de migração ERD diagram e colecao de testes automatizados.

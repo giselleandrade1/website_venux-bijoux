@@ -1,0 +1,21 @@
+Prompt para tipografia e hierarquia tipografica
+
+Quero que voce defina um sistema tipografico elegante e moderno para a loja de bijuterias. Deve ser legivel em telas e mobilidade e transmitir prestígio e acolhimento.
+
+1. Seleção de fontes
+   Sugira combinações de fontes web seguras e premium. Por exemplo pareamento 1: fonte serif elegante para titulos e fonte sans para corpo. Sugira alternativas gratuitas do Google Fonts e alternativas pagas se desejar. Forneca justificativa para cada escolha.
+
+2. Escala tipografica
+   Defina escala modular com steps claros. Forneca tamanhos para mobile e desktop e tokens correspondentes por exemplo fontSizeSm fontSizeMd fontSizeLg fontSizeXl fontSizeXxl. Indique lineHeight e letterSpacing.
+
+3. Hierarquia e uso
+   Para cada componente de interface defina estilo tipografico: logo titulo principal subtitulo card productTitle productPrice productMeta button text body small caption error success. Para cada um inclua peso estilo tamanho e uso pretendido.
+
+4. Acessibilidade tipografica
+   Assegure tamanhos minimo para corpo e controles conforme melhores praticas e contraste minimo com texto. Recomende fallback fonts e tecnicas para evitar reflow de layout.
+
+5. Implementacao CSS
+   Forneca exemplos de definicao de tokens em CSS ou em JSON sem usar trafo de nomes com traço. Mostre snippet de uso em componentes e como alternar tipografia entre modo claro e modo escuro.
+
+6. Entregaveis
+   Forneca arquivos de estilo prontos em formato CSS modules ou styled components tokens JSON e guidelines claras para designers e desenvolvedores.

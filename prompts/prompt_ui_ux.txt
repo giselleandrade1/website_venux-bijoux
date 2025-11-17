@@ -1,0 +1,40 @@
+Prompt para UI e UX
+
+Quero que você gere um design de interface completo para um website e aplicativo responsivo de e commerce de bijuteria artesanal focado em produtos para montar brinco, colar e pulseira. O design deve ser sofisticado, elegante e moderno em tons de café e adaptado para modo claro e modo escuro. Entregue especificações prontas para desenvolvimento incluindo design system, tokens, componentes e interações.
+
+1. Objetivo geral
+   Crie uma interface que converta visitantes em compradores por meio de experiência emocional, clara e eficiente. Foque em destaque visual para produto e personalização de montagem. Priorize performance, acessibilidade e escalabilidade visual.
+
+2. Design system e tokens
+   a) Defina tokens de cor com nomes sem traço por exemplo primary, secondary, neutral, accent, backgroundLight, backgroundDark, surface, textPrimary, textSecondary, shadow.
+   b) Defina tokens de tipografia com nomes sem traço por exemplo fontFamilyPrimary, fontSizeXs, fontSizeSm, fontSizeMd, fontSizeLg, fontSizeXl, lineHeightSm, lineHeightMd.
+   c) Defina tokens de espaçamento por exemplo spacingXs, spacingSm, spacingMd, spacingLg.
+   d) Defina tokens de borda por exemplo radiusSm, radiusMd, radiusLg.
+   e) Defina tokens de sombra por exemplo elevationLow, elevationMid, elevationHigh.
+   f) Entregue os tokens em formato JSON e em formato CSS variables usando camelCase ou underscore.
+
+3. Componentes atômicos e composições
+   Para cada componente entregue: estrutura do HTML sem código com traço, propriedades props, estados visuais, acessibilidade e animações. Componentes necessários:
+
+1) Header com logo, busca com sugestao e botao de modo claro modo escuro e icones de perfil e carrinho com contador.
+2) Footer com links de ajuda contatos redes sociais e certificacoes.
+3) Grid de produtos responsivo com cartas contendo imagem, nome curto, preco, badge de personalizacao e botao de acao.
+4) Ficha de produto expandida com galeria imagens zoom vista 360 selecao de pingente para brinco com opcoes dourado prata bronze e preview montado em mockup.
+5) Configurador de montagem em passo a passo com preview em tempo real e opcao salvar combinacao.
+6) Modal de confirmacao de escolha e modal de login rapido com autenticacao social.
+7) Sistema de filtros e ordenacao com microinteracoes.
+8) Barra de colecoes destacadas com slider responsivo.
+9) Componentes de feedback para sucesso erro carregando e aviso de estoque baixo.
+10) Icon set em formato font icon para marcas relevantes e icones de interface com cantos arredondados.
+
+4. Layouts e breakpoints
+   Defina breakpoints e grelha: mobile até 599px, tablet 600 a 959px, laptop 960 a 1279px, desktop 1280px ou mais. Para cada breakpoint descreva colunas gutter e comportamento de cards e imagens.
+
+5. Micro interacoes e animacoes
+   Defina animacoes sutis para hover focus click e transicoes em componentes. Use preferencia por animacoes de baixa duracao para acessibilidade. Liste propriedades CSS animadas e duracoes recomendadas.
+
+6. Acessibilidade e usabilidade
+   Garantir navegacao por teclado foco visivel labels aria e contraste minimo conforme WCAG 2.1 AA. Testes recomendados e ferramentas para validar.
+
+7. Entregaveis
+   Forneca arquivos de design em formato compativel com Figma incluindo components variants e styles, especificacao de tokens em JSON e CSS, assets otimizados em SVG e WebP, guia de uso dos componentes e um prototipo navegavel com fluxo de compra completo.
