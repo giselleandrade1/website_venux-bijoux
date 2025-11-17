@@ -1,0 +1,33 @@
+{
+  "fontFamilies": {
+    "display": "'Playfair Display', Georgia, serif",
+    "body": "'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial"
+  },
+  "scale": {
+    "fontSizeSmMobile": "13px",
+    "fontSizeMdMobile": "15px",
+    "fontSizeLgMobile": "18px",
+    "fontSizeXlMobile": "22px",
+    "fontSizeSmDesktop": "14px",
+    "fontSizeMdDesktop": "16px",
+    "fontSizeLgDesktop": "20px",
+    "fontSizeXlDesktop": "28px",
+    "lineHeightSm": 1.2,
+    "lineHeightMd": 1.4,
+    "lineHeightLg": 1.5
+  },
+  "hierarchy": {
+    "logo": {"fontFamily":"display","weight":700,"size":"28px","usage":"brand"},
+    "h1": {"fontFamily":"display","weight":700,"sizeDesktop":"36px","sizeMobile":"28px"},
+    "h2": {"fontFamily":"display","weight":600,"sizeDesktop":"28px","sizeMobile":"22px"},
+    "productTitle": {"fontFamily":"display","weight":600,"sizeDesktop":"20px","sizeMobile":"18px"},
+    "productPrice": {"fontFamily":"body","weight":700,"sizeDesktop":"18px","sizeMobile":"16px"},
+    "body": {"fontFamily":"body","weight":400,"sizeDesktop":"16px","sizeMobile":"15px"},
+    "button": {"fontFamily":"body","weight":600,"sizeDesktop":"15px","sizeMobile":"14px"},
+    "caption": {"fontFamily":"body","weight":400,"sizeDesktop":"12px","sizeMobile":"12px"}
+  },
+  "accessibility": {
+    "minBodySizePx": 15,
+    "contrastRecommendation": "Use WCAG 2.1 AA for text and large text"
+  }
+}

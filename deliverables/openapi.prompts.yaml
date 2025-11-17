@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info:
+  title: Venus Bijoux API
+  version: 0.1.0
+paths:
+  /auth/register:
+    post:
+      summary: Register new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: Created
+  /auth/login:
+    post:
+      summary: User login
+      requestBody:
+        required: true
+      responses:
+        '200':
+          description: OK
+  /products:
+    get:
+      summary: List products with filters and pagination
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of products
+  /products/{id}:
+    get:
+      summary: Get product detail
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Product detail
+  /cart:
+    post:
+      summary: Add item to cart
+    get:
+      summary: Get cart
+  /checkout:
+    post:
+      summary: Create checkout
+  /webhooks/payments:
+    post:
+      summary: Payment provider webhook
+      responses:
+        '200':
+          description: handled
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number

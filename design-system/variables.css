@@ -1,0 +1,64 @@
+/* Design tokens as CSS variables in camelCase */
+:root {
+  /* Colors */
+  --primary: #8B5E4A;
+  --secondary: #5A4136;
+  --neutral: #C9B8AF;
+  --accent: #C99B4A;
+  --backgroundLight: #F7F3EE;
+  --backgroundDark: #3B2F2A;
+  --surface: #FFFFFF;
+  --textPrimary: #1F1A18;
+  --textSecondary: #5A4F4A;
+  --shadow: rgba(31,26,24,0.08);
+
+  /* Typography */
+  --fontFamilyPrimary: "Playfair Display", Georgia, serif;
+  --fontFamilySecondary: "Inter", Arial, sans-serif;
+  --fontSizeXs: 12px;
+  --fontSizeSm: 14px;
+  --fontSizeMd: 16px;
+  --fontSizeLg: 20px;
+  --fontSizeXl: 28px;
+  --fontSizeXxl: 36px;
+  --lineHeightSm: 1.2;
+  --lineHeightMd: 1.4;
+  --lineHeightLg: 1.5;
+
+  /* Spacing */
+  --spacingXs: 4px;
+  --spacingSm: 8px;
+  --spacingMd: 16px;
+  --spacingLg: 24px;
+  --spacingXl: 40px;
+
+  /* Radius */
+  --radiusSm: 6px;
+  --radiusMd: 10px;
+  --radiusLg: 16px;
+
+  /* Elevation */
+  --elevationLow: 0 1px 2px rgba(31,26,24,0.06);
+  --elevationMid: 0 6px 18px rgba(31,26,24,0.08);
+  --elevationHigh: 0 20px 40px rgba(31,26,24,0.12);
+}
+
+/* Dark mode mapping */
+[data-theme="dark"] {
+  --background: var(--backgroundDark);
+  --textOnBackground: var(--textLight, #FFFFFF);
+}
+
+/* Utility examples */
+.body {
+  background: var(--backgroundLight);
+  color: var(--textPrimary);
+  font-family: var(--fontFamilySecondary);
+}
+
+.card {
+  background: var(--surface);
+  box-shadow: var(--elevationLow);
+  border-radius: var(--radiusMd);
+  padding: var(--spacingMd);
+}

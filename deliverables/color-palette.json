@@ -1,0 +1,12 @@
+{
+  "coffeeDeep": {"hex":"#3B2F2A","usage":"header text dark mode","contrastWithLightText":14.5,"contrastWithDarkText":2.1},
+  "coffeeMid": {"hex":"#5A4136","usage":"card surface","contrastWithLightText":12.1,"contrastWithDarkText":2.8},
+  "coffeeWarm": {"hex":"#8B5E4A","usage":"accent badges buttons","contrastWithLightText":8.9,"contrastWithDarkText":3.5},
+  "creamLight": {"hex":"#F7F3EE","usage":"background light mode","contrastWithLightText":1.9,"contrastWithDarkText":15.2},
+  "taupeSoft": {"hex":"#C9B8AF","usage":"secondary background and borders","contrastWithLightText":3.8,"contrastWithDarkText":9.4},
+  "goldAccent": {"hex":"#C99B4A","usage":"dourado pingentes highlights","contrastWithLightText":6.2,"contrastWithDarkText":3.9},
+  "silverAccent": {"hex":"#BFC5C9","usage":"prata pingentes icons","contrastWithLightText":4.0,"contrastWithDarkText":8.8},
+  "bronzeAccent": {"hex":"#8C6A4A","usage":"bronze details","contrastWithLightText":5.6,"contrastWithDarkText":4.2},
+  "textDark": {"hex":"#1F1A18","usage":"text on light backgrounds","contrastWithLightText":16.8,"contrastWithDarkText":1.7},
+  "textLight": {"hex":"#FFFFFF","usage":"text on dark backgrounds","contrastWithLightText":1.0,"contrastWithDarkText":21.0}
+}

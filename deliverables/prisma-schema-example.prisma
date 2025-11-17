@@ -1,0 +1,90 @@
+// Example prisma schema fragment for core entities
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  carts     Cart[]
+  orders    Order[]
+}
+
+model Product {
+  id          String           @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  images      ProductImage[]
+  variants    ProductVariant[]
+  createdAt   DateTime         @default(now())
+}
+
+model ProductVariant {
+  id        String         @id @default(cuid())
+  sku       String         @unique
+  product   Product        @relation(fields: [productId], references: [id])
+  productId String
+  inventory Inventory?
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  url       String
+  alt       String?
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  user      User?      @relation(fields: [userId], references: [id])
+  userId    String?
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+}
+
+model CartItem {
+  id         String  @id @default(cuid())
+  cart       Cart    @relation(fields: [cartId], references: [id])
+  cartId     String
+  productId  String
+  variantId  String?
+  quantity   Int
+}
+
+model Order {
+  id         String      @id @default(cuid())
+  user       User        @relation(fields: [userId], references: [id])
+  userId     String
+  total      Float
+  status     String
+  items      OrderItem[]
+  createdAt  DateTime    @default(now())
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   String
+  productId String
+  variantId String?
+  price     Float
+  quantity  Int
+}
+
+model Inventory {
+  id               String @id @default(cuid())
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
+  productVariantId String
+  quantity         Int
+}
