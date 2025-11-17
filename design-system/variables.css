@@ -62,3 +62,28 @@
   border-radius: var(--radiusMd);
   padding: var(--spacingMd);
 }
+
+/* Aliases expected by components (backwards compatibility)
+   These map the canonical token names to the variable names used across the frontend components.
+*/
+:root {
+  --color-surface: var(--surface);
+  --color-background: var(--backgroundLight);
+  --color-text: var(--textPrimary);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+
+  --font-family-primary: var(--fontFamilyPrimary);
+  --font-family-secondary: var(--fontFamilySecondary);
+
+  --font-size-md: var(--fontSizeMd);
+
+  --spacing-md: var(--spacingMd);
+  --spacing-lg: var(--spacingLg);
+
+  --radius-sm: var(--radiusSm);
+  --radius-md: var(--radiusMd);
+
+  --elevationLow: var(--elevationLow);
+}

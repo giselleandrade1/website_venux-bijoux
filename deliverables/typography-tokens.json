@@ -17,14 +17,54 @@
     "lineHeightLg": 1.5
   },
   "hierarchy": {
-    "logo": {"fontFamily":"display","weight":700,"size":"28px","usage":"brand"},
-    "h1": {"fontFamily":"display","weight":700,"sizeDesktop":"36px","sizeMobile":"28px"},
-    "h2": {"fontFamily":"display","weight":600,"sizeDesktop":"28px","sizeMobile":"22px"},
-    "productTitle": {"fontFamily":"display","weight":600,"sizeDesktop":"20px","sizeMobile":"18px"},
-    "productPrice": {"fontFamily":"body","weight":700,"sizeDesktop":"18px","sizeMobile":"16px"},
-    "body": {"fontFamily":"body","weight":400,"sizeDesktop":"16px","sizeMobile":"15px"},
-    "button": {"fontFamily":"body","weight":600,"sizeDesktop":"15px","sizeMobile":"14px"},
-    "caption": {"fontFamily":"body","weight":400,"sizeDesktop":"12px","sizeMobile":"12px"}
+    "logo": {
+      "fontFamily": "display",
+      "weight": 700,
+      "size": "28px",
+      "usage": "brand"
+    },
+    "h1": {
+      "fontFamily": "display",
+      "weight": 700,
+      "sizeDesktop": "36px",
+      "sizeMobile": "28px"
+    },
+    "h2": {
+      "fontFamily": "display",
+      "weight": 600,
+      "sizeDesktop": "28px",
+      "sizeMobile": "22px"
+    },
+    "productTitle": {
+      "fontFamily": "display",
+      "weight": 600,
+      "sizeDesktop": "20px",
+      "sizeMobile": "18px"
+    },
+    "productPrice": {
+      "fontFamily": "body",
+      "weight": 700,
+      "sizeDesktop": "18px",
+      "sizeMobile": "16px"
+    },
+    "body": {
+      "fontFamily": "body",
+      "weight": 400,
+      "sizeDesktop": "16px",
+      "sizeMobile": "15px"
+    },
+    "button": {
+      "fontFamily": "body",
+      "weight": 600,
+      "sizeDesktop": "15px",
+      "sizeMobile": "14px"
+    },
+    "caption": {
+      "fontFamily": "body",
+      "weight": 400,
+      "sizeDesktop": "12px",
+      "sizeMobile": "12px"
+    }
   },
   "accessibility": {
     "minBodySizePx": 15,

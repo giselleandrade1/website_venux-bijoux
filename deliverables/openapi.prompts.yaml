@@ -18,7 +18,7 @@ paths:
                 password:
                   type: string
       responses:
-        '201':
+        "201":
           description: Created
   /auth/login:
     post:
@@ -26,7 +26,7 @@ paths:
       requestBody:
         required: true
       responses:
-        '200':
+        "200":
           description: OK
   /products:
     get:
@@ -41,7 +41,7 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: A list of products
   /products/{id}:
     get:
@@ -53,7 +53,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Product detail
   /cart:
     post:
@@ -67,7 +67,7 @@ paths:
     post:
       summary: Payment provider webhook
       responses:
-        '200':
+        "200":
           description: handled
 components:
   schemas:

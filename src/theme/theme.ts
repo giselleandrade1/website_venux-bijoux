@@ -3,82 +3,110 @@
 */
 
 export const colors = {
-  coffeeDeep: '#3B2F2A',
-  coffeeMid: '#5A4136',
-  coffeeWarm: '#8B5E4A',
-  creamLight: '#F7F3EE',
-  taupeSoft: '#C9B8AF',
-  goldAccent: '#C99B4A',
-  silverAccent: '#BFC5C9',
-  bronzeAccent: '#8C6A4A',
-  textDark: '#1F1A18',
-  textLight: '#FFFFFF'
-}
+  coffeeDeep: "#3B2F2A",
+  coffeeMid: "#5A4136",
+  coffeeWarm: "#8B5E4A",
+  creamLight: "#F7F3EE",
+  taupeSoft: "#C9B8AF",
+  goldAccent: "#C99B4A",
+  silverAccent: "#BFC5C9",
+  bronzeAccent: "#8C6A4A",
+  textDark: "#1F1A18",
+  textLight: "#FFFFFF",
+};
 
 export const typography = {
   fontFamilyPrimary: "'Playfair Display', Georgia, serif",
   fontFamilySecondary: "'Inter', system-ui, Arial, sans-serif",
-  fontSizeXs: '12px',
-  fontSizeSm: '14px',
-  fontSizeMd: '16px',
-  fontSizeLg: '20px',
-  fontSizeXl: '28px',
+  fontSizeXs: "12px",
+  fontSizeSm: "14px",
+  fontSizeMd: "16px",
+  fontSizeLg: "20px",
+  fontSizeXl: "28px",
   lineHeightSm: 1.2,
-  lineHeightMd: 1.5
-}
+  lineHeightMd: 1.5,
+};
 
 export const spacing = {
-  xs: '4px',
-  sm: '8px',
-  md: '16px',
-  lg: '24px',
-  xl: '40px'
-}
+  xs: "4px",
+  sm: "8px",
+  md: "16px",
+  lg: "24px",
+  xl: "40px",
+};
 
 export const radius = {
-  sm: '6px',
-  md: '10px',
-  lg: '16px'
-}
+  sm: "6px",
+  md: "10px",
+  lg: "16px",
+};
 
 export const elevation = {
-  low: '0 1px 2px rgba(31,26,24,0.06)',
-  mid: '0 6px 18px rgba(31,26,24,0.08)',
-  high: '0 20px 40px rgba(31,26,24,0.12)'
-}
+  low: "0 1px 2px rgba(31,26,24,0.06)",
+  mid: "0 6px 18px rgba(31,26,24,0.08)",
+  high: "0 20px 40px rgba(31,26,24,0.12)",
+};
 
 export const lightTheme = {
-  mode: 'light',
+  mode: "light",
   colors: {
     background: colors.creamLight,
     surface: colors.taupeSoft,
     text: colors.textDark,
     primary: colors.coffeeWarm,
     secondary: colors.coffeeMid,
-    accent: colors.goldAccent
+    accent: colors.goldAccent,
   },
   typography,
   spacing,
   radius,
-  elevation
-}
+  elevation,
+};
 
 export const darkTheme = {
-  mode: 'dark',
+  mode: "dark",
   colors: {
     background: colors.coffeeDeep,
     surface: colors.coffeeMid,
     text: colors.textLight,
     primary: colors.coffeeWarm,
     secondary: colors.taupeSoft,
-    accent: colors.goldAccent
+    accent: colors.goldAccent,
   },
   typography,
   spacing,
   radius,
-  elevation
-}
+  elevation,
+};
 
-export type Theme = typeof lightTheme
+export type Theme = typeof lightTheme;
 
-export default lightTheme
+export default lightTheme;
+
+// Helper: produce CSS variable strings from a theme
+export const cssVarsForTheme = (t: Theme) => {
+  const vars: Record<string, string | number> = {
+    "--color-background": t.colors.background,
+    "--color-surface": t.colors.surface,
+    "--color-text": t.colors.text,
+    "--color-primary": t.colors.primary,
+    "--color-secondary": t.colors.secondary,
+    "--color-accent": t.colors.accent,
+    "--font-family-primary": typography.fontFamilyPrimary,
+    "--font-family-secondary": typography.fontFamilySecondary,
+    "--font-size-xs": typography.fontSizeXs,
+    "--font-size-sm": typography.fontSizeSm,
+    "--font-size-md": typography.fontSizeMd,
+    "--space-md": spacing.md,
+    "--radius-md": radius.md,
+  };
+
+  return Object.entries(vars)
+    .map(([k, v]) => `${k}: ${v};`)
+    .join("\n");
+};
+
+export const lightCss = `:root {\n${cssVarsForTheme(lightTheme)}\n}`;
+export const darkCss = `[data-theme="dark"] {\n${cssVarsForTheme(
+  darkTheme
+)}\n}`;
