@@ -1,8 +1,0 @@
-:root{
-  --bg: #F7F3EE;
-  --text: #1F1A18;
-  --accent: #8B5E4A;
-}
-html,body,#__next{height:100%;}
-body{margin:0;font-family:Inter, system-ui, Arial, sans-serif;background:var(--bg);color:var(--text)}
-input{padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
