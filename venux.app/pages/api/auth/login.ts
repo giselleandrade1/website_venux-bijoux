@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
-import { prisma } from "../_lib/prisma";
+import { prisma } from "@/src/lib/prisma";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "dev";

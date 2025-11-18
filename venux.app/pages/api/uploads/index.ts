@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { requireAuth } from "../_lib/auth";
+import { requireAuth } from "@/src/lib/auth";
 
 export default async function handler(
   req: NextApiRequest,

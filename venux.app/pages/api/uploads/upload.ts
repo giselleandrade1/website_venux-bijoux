@@ -2,8 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
 import formidable from "formidable";
-import { requireAuth } from "../_lib/auth";
-import { prisma } from "../_lib/prisma";
+import { requireAuth } from "@/src/lib/auth";
+import { prisma } from "@/src/lib/prisma";
 
 export const config = {
   api: {

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../_lib/prisma";
-import { requireAuth, AuthNextRequest } from "../_lib/auth";
+import { prisma } from "@/src/lib/prisma";
+import { requireAuth, AuthNextRequest } from "@/src/lib/auth";
 
 async function handler(req: AuthNextRequest, res: NextApiResponse) {
   if (req.method !== "POST") return res.status(405).end();

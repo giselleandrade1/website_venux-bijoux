@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../_lib/prisma";
-import { requireAuth } from "../_lib/auth";
+import { prisma } from "@/src/lib/prisma";
+import { requireAuth } from "@/src/lib/auth";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { slug } = req.query as { slug: string };

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
-import { prisma } from "../_lib/prisma";
+import { prisma } from "@/src/lib/prisma";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "dev";
@@ -39,13 +39,11 @@ export default async function handler(
         expiresAt: new Date(Date.now() + 7 * 24 * 3600 * 1000),
       },
     });
-    res
-      .status(201)
-      .json({
-        user: { id: user.id, email: user.email, role: user.role },
-        accessToken,
-        refreshToken,
-      });
+    res.status(201).json({
+      user: { id: user.id, email: user.email, role: user.role },
+      accessToken,
+      refreshToken,
+    });
   } catch (err: any) {
     console.error("register error", err);
     res.status(400).json({ error: err?.message || "Could not register" });
