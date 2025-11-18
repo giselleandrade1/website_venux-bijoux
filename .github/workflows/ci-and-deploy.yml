@@ -1,0 +1,49 @@
+name: CI and Optional Vercel Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install root deps
+        run: npm ci
+      - name: Install venux.app deps
+        run: |
+          cd venux.app
+          npm ci
+      - name: Run frontend tests
+        run: |
+          cd venux.app
+          npm test --silent
+      - name: Build frontend (verify)
+        run: |
+          cd venux.app
+          npm run build
+
+  vercel-deploy:
+    if: ${{ secrets.VERCEL_TOKEN != '' }}
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vercel Action
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: --prod
+          working-directory: ./venux.app
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
